@@ -4,7 +4,7 @@
 用法:
 
 ```
-▶ cat mass.out | grep -v 443 | grep -v 80 | grep open | mass2dir
+▶ cat mass.out | grep -v 443 | grep -v 80 | grep open | mass2dir | httpx | tee https_mass.txt
 ```
 
 安装:
