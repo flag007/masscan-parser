@@ -4,6 +4,12 @@
 用法:
 
 ```
+▶ cat mass.out | grep open | masscan-parser | httpx | tee https_mass.txt
+```
+
+
+```
+去除， 80， 443端口
 ▶ cat mass.out | grep -v 443 | grep -v 80 | grep open | masscan-parser | httpx | tee https_mass.txt
 ```
 
