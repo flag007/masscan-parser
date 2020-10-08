@@ -10,5 +10,5 @@
 安装:
 
 ```
-▶ go get -u -v github.com/flag007/mass2dir
+▶ go get -u -v github.com/flag007/masscan-parser
 ```
