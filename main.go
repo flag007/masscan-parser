@@ -4,13 +4,17 @@ import (
 	"fmt"
 	"strings"
 	"os"
+	"flag"
 	"bufio"
 )
+var delPort bool
 
 func main() {
 	sc := bufio.NewScanner(os.Stdin)
 	portsMap := make(map[string][]string)
+	flag.BoolVar(&delPort, "d", false,"删除80 443端口输出，默认全部输出")
 
+	flag.Parse()
 	for sc.Scan() {
 		line := strings.ToLower(sc.Text())
 		s := strings.Fields(line)
@@ -31,8 +35,19 @@ func main() {
 
 
 	for ip, ports := range portsMap {
-		for _, port := range ports {
-			fmt.Println(ip + ":" + port)
+		if (len(ports)) <= 80 {
+			for _, port := range ports {
+				if !delPort {
+					fmt.Println(ip + ":" + port)
+					continue
+				}
+
+				if port == "80" || port == "443" {
+					continue
+				}
+
+				fmt.Println(ip + ":" + port)
+			}
 		}
 	}
 
